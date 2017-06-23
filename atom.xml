@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Beaven&#39;s Blog</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2017-06-23T05:03:57.672Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Beaven Wang</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://yoursite.com/2017/06/23/hello-world/"/>
+    <id>http://yoursite.com/2017/06/23/hello-world/</id>
+    <published>2017-06-23T05:03:57.672Z</published>
+    <updated>2017-06-23T05:03:57.672Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Android系统架构</title>
+    <link href="http://yoursite.com/2017/02/06/Android%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84/"/>
+    <id>http://yoursite.com/2017/02/06/Android系统架构/</id>
+    <published>2017-02-06T01:35:43.000Z</published>
+    <updated>2017-06-23T08:55:59.022Z</updated>
+    
+    <content type="html"><![CDATA[<h5 id="基于Android官方文档学习翻译。"><a href="#基于Android官方文档学习翻译。" class="headerlink" title="基于Android官方文档学习翻译。"></a>基于Android官方文档学习翻译。</h5><p>Android是一个基于Linux的开源系统，适用于各种外形的设备。本篇文章翻译自官方文档介绍了Android系统的整体架构。<br><a id="more"></a></p>
+<p>下图显示了Android平台的主要组件：</p>
+<p><img src="https://developer.android.google.cn/guide/platform/images/android-stack_2x.png" alt=""></p>
+<h4 id="Linux内核"><a href="#Linux内核" class="headerlink" title="Linux内核"></a>Linux内核</h4><p>​    Android系统的底层是依赖于Linux内核。例如，Android运行环境（ART）依赖于Linux内核的底层功能，如线程和底层内存的管理。</p>
+<p>​    Linux内核允许Android使用重要的安全特性，并允许设备制造商为一个知名的内核开发硬件驱动程序。</p>
+<h4 id="硬件抽象层（HAL）"><a href="#硬件抽象层（HAL）" class="headerlink" title="硬件抽象层（HAL）"></a>硬件抽象层（HAL）</h4><p>​    硬件抽象层（HAL）提供了将设备硬件功能暴露给更高级别的Java API框架的标准接口。 HAL由多个库模块组成，每个库模块实现用于特定类型的硬件组件（例如相机或蓝牙模块）的接口。 当框架API被调用访问设备硬件时，Android系统将加载该硬件组件的库模块。</p>
+<h4 id="Android运行环境"><a href="#Android运行环境" class="headerlink" title="Android运行环境"></a>Android运行环境</h4><p>​    对于运行Android版本5.0（API level 21）或者更高版本的设备，每个应用程序都运行在其自己的进程里，同时拥有自己的Android运行环境实例。ART被用来在低内存设备上执行DEX文件运行在多个虚拟机中而编写的，DEX文件是专为Android设计的专为最小内存占用而优化的字节码格式。构建工具链，如Jack，将Java源代码编译成DEX字节码，可以在Android平台上运行。</p>
+<p>ART的一些主要特征包括：</p>
+<ul>
+<li>预先编译（AOT）和即时（JIT）编译</li>
+<li>优化垃圾回收（GC）</li>
+<li>更好的调试支持，包括专用的采样分析器，详细的诊断异常和崩溃报告，以及设置监视点以监视特定字段的能力</li>
+</ul>
+<p>​        在早于Android5.0版本（API 21）之前，Dalvik是Android的运行环境。如果你的应用程序可以很好的运ART上，那么他应该也可以在Dalvik上很好的运行，但是反之则不然。</p>
+<h4 id="C-C-原生本地库"><a href="#C-C-原生本地库" class="headerlink" title="C/C++原生本地库"></a>C/C++原生本地库</h4><p>​    许多Android系统组件和服务的核心，例如ART和HAL，都是使用C/C++的本地库代码构建的。Android平台提供了一些Java框架的API，用来向应用程序公开一些本地库的功能。例如，你可以通过Android的Java OpenGL API框架来访问OpenGL ES，从而支持应用程序对2D和3D图形的绘制和操作。</p>
+<p>​    如果你正在开发需要C/C++代码的应用程序，你可以使用Android NDK从你的C/C++代码来访问这些本地平台库。</p>
+<h4 id="Java-API-框架"><a href="#Java-API-框架" class="headerlink" title="Java API 框架"></a>Java API 框架</h4><p>​    您可以通过以Java语言编写的API来使用Android操作系统的整个功能集。这些API的建立是通过简化核心的重用，模块化的系统组件和服务，其中包括以下内容来创建Android应用的基石：</p>
+<ul>
+<li>丰富且可扩展的View系统，可用于构建应用程序的UI，包括列表，网格，文本框，按钮，甚至可嵌入式Web浏览器</li>
+<li>资源管理器，提供对非代码资源（如本地化字符串，图形和布局文件）的访问</li>
+<li>通知管理器，可让所有应用在状态栏中显示自定义提醒</li>
+<li>一个Activity Manager，用于管理应用程序的生命周期，并提供通用的导航返回堆栈</li>
+<li>Content Providers（内容提供者），可让应用程序访问其他应用程序（例如联系人）的资料，或是分享自己的资料</li>
+</ul>
+<p>开发人员完全可以通过访问标准的API框架来使用Android系统应用。</p>
+<h4 id="系统应用程序"><a href="#系统应用程序" class="headerlink" title="系统应用程序"></a>系统应用程序</h4><p>​    Android提供了一套核心应用程序，用于电子邮件，短信，日历，互联网浏览，联系人等。 该平台附带的应用在用户选择安装的应用之间没有特殊状态。 因此，第三方应用程序可以成为用户的默认网络浏览器，短信通讯录，甚至默认键盘（有些例外情况，例如系统的设置）。</p>
+<p>​    系统应用程序既可以作为用户的应用程序，也可以提供开发人员可以从自己的应用程序访问的关键功能。 例如，如果您的应用想要发送短信，则不需要自行构建该功能，您可以调用已安装的任何短信应用，向您指定的收件人发送短信。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h5 id=&quot;基于Android官方文档学习翻译。&quot;&gt;&lt;a href=&quot;#基于Android官方文档学习翻译。&quot; class=&quot;headerlink&quot; title=&quot;基于Android官方文档学习翻译。&quot;&gt;&lt;/a&gt;基于Android官方文档学习翻译。&lt;/h5&gt;&lt;p&gt;Android是一个基于Linux的开源系统，适用于各种外形的设备。本篇文章翻译自官方文档介绍了Android系统的整体架构。&lt;br&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
