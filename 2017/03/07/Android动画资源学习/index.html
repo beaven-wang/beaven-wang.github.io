@@ -1,0 +1,250 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Android动画资源学习 · Beaven's Blog</title><meta name="description" content="Android动画资源学习 - Beaven Wang"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicona.ico"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://yoursite.com/atom.xml" title="Beaven's Blog"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="https://github.com/beaven-wang" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/about/" target="_self" class="nav-list-link">ABOUT</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">Android动画资源学习</h1><div class="post-info">Mar 7, 2017</div><div class="post-content"><p>Android动画分为三种：属性动画，补间动画，帧动画。本篇文章是对Android官方文档中关于动画资源一文的翻译学习，介绍了三种动画资源的的相关属性，xml的编写和引用。<br><a id="more"></a></p>
+<p>动画资源的定义分为两种动画：</p>
+<h5 id="属性动画"><a href="#属性动画" class="headerlink" title="属性动画"></a>属性动画</h5><p>动画制作者可以通过在设置的时间内修改对象的属性值来创建一个动画。</p>
+<h5 id="视图动画"><a href="#视图动画" class="headerlink" title="视图动画"></a>视图动画</h5><p>可以使用视图动画框架执行两种类型的动画：</p>
+<ul>
+<li><p>补间动画</p>
+<p>通过对单一图像执行一系列变换从而产生动画效果。</p>
+</li>
+<li><p>帧动画</p>
+<p>通过按顺序展示连续的图片产生动画效果。</p>
+</li>
+</ul>
+<h4 id="属性动画-1"><a href="#属性动画-1" class="headerlink" title="属性动画"></a>属性动画</h4><hr>
+<p>在一定的时间内修改目标对象的属性产生动画的xml文件，例如背景颜色或者alpah值。</p>
+<h5 id="文件位置："><a href="#文件位置：" class="headerlink" title="文件位置："></a>文件位置：</h5><p>res/animator/filename.xml</p>
+<p>这个文件名将作为资源id被使用。</p>
+<h5 id="编译资源数据类型："><a href="#编译资源数据类型：" class="headerlink" title="编译资源数据类型："></a>编译资源数据类型：</h5><p>ValueAnimator, ObjectAnimator, AnimatorSet</p>
+<h5 id="资源引用："><a href="#资源引用：" class="headerlink" title="资源引用："></a>资源引用：</h5><p>In Java:R.animator.filename<br>In XML:@[package:]animator/filename</p>
+<h5 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">set</span></span></div><div class="line">  <span class="attr">android:ordering</span>=<span class="string">[</span>"<span class="attr">together</span>" | "<span class="attr">sequentially</span>"]&gt;</div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">objectAnimator</span></span></div><div class="line">        <span class="attr">android:propertyName</span>=<span class="string">"string"</span> </div><div class="line">        <span class="attr">android:duration</span>=<span class="string">"int"</span> </div><div class="line">        <span class="attr">android:valueFrom</span>=<span class="string">"float | int | color"</span> </div><div class="line">        <span class="attr">android:valueTo</span>=<span class="string">"float | int | color"</span> </div><div class="line">        <span class="attr">android:startOffset</span>=<span class="string">"int"</span>  </div><div class="line">        <span class="attr">android:repeatCount</span>=<span class="string">"int"</span></div><div class="line">        <span class="attr">android:repeatMode</span>=<span class="string">[</span>"<span class="attr">repeat</span>" | "<span class="attr">reverse</span>"] </div><div class="line">        <span class="attr">android:valueType</span>=<span class="string">[</span>"<span class="attr">intType</span>" | "<span class="attr">floatType</span>"]/&gt;</div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">animator</span></span></div><div class="line">        <span class="attr">android:duration</span>=<span class="string">"int"</span></div><div class="line">        <span class="attr">android:valueFrom</span>=<span class="string">"float | int | color"</span></div><div class="line">        <span class="attr">android:valueTo</span>=<span class="string">"float | int | color"</span></div><div class="line">        <span class="attr">android:startOffset</span>=<span class="string">"int"</span></div><div class="line">        <span class="attr">android:repeatCount</span>=<span class="string">"int"</span></div><div class="line">        <span class="attr">android:repeatMode</span>=<span class="string">[</span>"<span class="attr">repeat</span>" | "<span class="attr">reverse</span>"]</div><div class="line">        <span class="attr">android:valueType</span>=<span class="string">[</span>"<span class="attr">intType</span>" | "<span class="attr">floatType</span>"]/&gt;</div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">set</span>&gt;</span></div><div class="line">        ...</div><div class="line">    <span class="tag">&lt;/<span class="name">set</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">set</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>文件必须有一个唯一的根元素:set,objectAnmiator,valueAnimator三者中的一个。可以在set标签内部将动画元素组合在一起，包括其他的set元素。</p>
+<h5 id="元素："><a href="#元素：" class="headerlink" title="元素："></a>元素：</h5><ul>
+<li><p>set：保存其他动画元素的容器（objectAnimator,valueAnimator,set）.</p>
+<p>您可以指定嵌套的set标签以进一步将动画分组在一起。每个set标签可以定义自己的属性顺序。</p>
+<p>属性：</p>
+<p>android:ordering</p>
+<p>关键词，指定集合中动画的播放顺序。</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sequentially</td>
+<td>按顺序播放</td>
+</tr>
+<tr>
+<td>together (default)</td>
+<td>同时播放</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>objectAnimator:在特定时间内动画对象的特定属性。</p>
+<p>属性：</p>
+<p>android:propertyName</p>
+<p>String类型，必须属性。通过名称引用对象的属性动画,例如你可以为一个view对象指定”alpha”或“backgroundColor”.然而，objectAnimator元素不会暴露目标属性，因此无法在XML声明中将对象设置为动画。为了设置包含此属性的目标对象，必须通过调用loadAnimator()和setTarget()方法使用定义的xml动画资源。</p>
+<p>android:valueTo</p>
+<p>float, int,color类型，必须属性。动画属性结束的值，颜色表示为6为16进制数字（#333333）。</p>
+<p>android:valueFrom</p>
+<p>float, int,color类型。动画属性开始的值。 如果未指定，动画将从属性的get方法获取的值开始。 颜色表示为六位十六进制数字（＃333333）。</p>
+<p>android:duration</p>
+<p>int类型。动画的时间（以毫秒为单位）。 默认为300毫秒。</p>
+<p>android:startOffset</p>
+<p>int类型，调用start()方法后动画的延迟毫秒数。</p>
+<p>android:repeatCount</p>
+<p>int类型。动画的重复次数。设置为“-1”，进行无限重复，或到一个正整数为止。例如，值为“1”表示动画在初始化运行后再重复一次，也就是动画总共执行了两次。默认值为“0”，表示不重复。</p>
+<p>android:repeatMode</p>
+<p>int类型。动画从开始到结束的形式。android：repeatCount必须设置为正整数或“-1”，此属性才有效果。设置为“反向”以使动画与每次迭代的方向相反，或者“重复”使动画从开始每次循环。</p>
+<p>android:valueType</p>
+<p>关键词。如果值是颜色，请不要指定此属性。 动画框架自动处理颜色值。</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>intType</td>
+<td>指定动画值为整数</td>
+</tr>
+<tr>
+<td>floatType (default)</td>
+<td>指定动画值为float</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">set</span> <span class="attr">android:ordering</span>=<span class="string">"sequentially"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">set</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">objectAnimator</span></span></div><div class="line">            <span class="attr">android:propertyName</span>=<span class="string">"x"</span></div><div class="line">            <span class="attr">android:duration</span>=<span class="string">"500"</span></div><div class="line">            <span class="attr">android:valueTo</span>=<span class="string">"400"</span></div><div class="line">            <span class="attr">android:valueType</span>=<span class="string">"intType"</span>/&gt;</div><div class="line">        <span class="tag">&lt;<span class="name">objectAnimator</span></span></div><div class="line">            <span class="attr">android:propertyName</span>=<span class="string">"y"</span></div><div class="line">            <span class="attr">android:duration</span>=<span class="string">"500"</span></div><div class="line">            <span class="attr">android:valueTo</span>=<span class="string">"300"</span></div><div class="line">            <span class="attr">android:valueType</span>=<span class="string">"intType"</span>/&gt;</div><div class="line">    <span class="tag">&lt;/<span class="name">set</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">objectAnimator</span></span></div><div class="line">        <span class="attr">android:propertyName</span>=<span class="string">"alpha"</span></div><div class="line">        <span class="attr">android:duration</span>=<span class="string">"500"</span></div><div class="line">        <span class="attr">android:valueTo</span>=<span class="string">"1f"</span>/&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">set</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>为了运行此动画，您必须将代码中的XML资源扩充为AnimatorSet对象，然后在开始动画集之前为所有动画设置目标对象。 为方便起见，调用setTarget（）为AnimatorSet的所有子项设置单个目标对象。 以下代码显示了如何执行此操作：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(myContext,</div><div class="line">    R.anim.property_animator);</div><div class="line">set.setTarget(myObject);</div><div class="line">set.start();</div></pre></td></tr></table></figure>
+<h4 id="视图动画-1"><a href="#视图动画-1" class="headerlink" title="视图动画"></a>视图动画</h4><hr>
+<p>视图动画框架支持补间动画和帧动画，它们都可以在XML中声明。 下面介绍如何使用这两种方法。</p>
+<h5 id="补间动画"><a href="#补间动画" class="headerlink" title="补间动画"></a>补间动画</h5><p>在xml文件中定义用于执行图像的旋转、淡化、位移、和拉伸的动画。</p>
+<h5 id="文件位置：-1"><a href="#文件位置：-1" class="headerlink" title="文件位置："></a>文件位置：</h5><p>res/anim/filename.xml</p>
+<p>文件名称用于资源id</p>
+<h5 id="编译资源数据类型：-1"><a href="#编译资源数据类型：-1" class="headerlink" title="编译资源数据类型："></a>编译资源数据类型：</h5><p>Resource pointer to an Animation</p>
+<h5 id="资源引用：-1"><a href="#资源引用：-1" class="headerlink" title="资源引用："></a>资源引用：</h5><p>In Java:R.animator.filename<br>In XML:@[package:]animator/filename</p>
+<h5 id="示例：-1"><a href="#示例：-1" class="headerlink" title="示例："></a>示例：</h5><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">set</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">    <span class="attr">android:interpolator</span>=<span class="string">"@[package:]anim/interpolator_resource"</span></div><div class="line">    <span class="attr">android:shareInterpolator</span>=<span class="string">[</span>"<span class="attr">true</span>" | "<span class="attr">false</span>"] &gt;</div><div class="line">    <span class="tag">&lt;<span class="name">alpha</span></span></div><div class="line">        <span class="attr">android:fromAlpha</span>=<span class="string">"float"</span></div><div class="line">        <span class="attr">android:toAlpha</span>=<span class="string">"float"</span> /&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">scale</span></span></div><div class="line">        <span class="attr">android:fromXScale</span>=<span class="string">"float"</span></div><div class="line">        <span class="attr">android:toXScale</span>=<span class="string">"float"</span></div><div class="line">        <span class="attr">android:fromYScale</span>=<span class="string">"float"</span></div><div class="line">        <span class="attr">android:toYScale</span>=<span class="string">"float"</span></div><div class="line">        <span class="attr">android:pivotX</span>=<span class="string">"float"</span></div><div class="line">        <span class="attr">android:pivotY</span>=<span class="string">"float"</span> /&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">translate</span></span></div><div class="line">        <span class="attr">android:fromXDelta</span>=<span class="string">"float"</span></div><div class="line">        <span class="attr">android:toXDelta</span>=<span class="string">"float"</span></div><div class="line">        <span class="attr">android:fromYDelta</span>=<span class="string">"float"</span></div><div class="line">        <span class="attr">android:toYDelta</span>=<span class="string">"float"</span> /&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">rotate</span></span></div><div class="line">        <span class="attr">android:fromDegrees</span>=<span class="string">"float"</span></div><div class="line">        <span class="attr">android:toDegrees</span>=<span class="string">"float"</span></div><div class="line">        <span class="attr">android:pivotX</span>=<span class="string">"float"</span></div><div class="line">        <span class="attr">android:pivotY</span>=<span class="string">"float"</span> /&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">set</span>&gt;</span></div><div class="line">        ...</div><div class="line">    <span class="tag">&lt;/<span class="name">set</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">set</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>文件必须有一个唯一的根元素，可以是alpha,scale,translate,roate,或者是包含了其他动画元素（甚至嵌套的set元素）的一组（或多组）的set标签。</p>
+<h5 id="元素：-1"><a href="#元素：-1" class="headerlink" title="元素："></a>元素：</h5><p>set:</p>
+<p>包含其他动画元素（alpha，scale，translate，rotate）或其他set元素的容器。 表示AnimationSet。</p>
+<p>属性：</p>
+<p>android:interpolator</p>
+<p>插值器资源。插值器应用于动画。它的值必须是对制定的插值器（不是插值器类名称）的资源的引用。平台提供了默认的插值器资源，或者可以创建自己的插值器资源。</p>
+<p>android:shareInterpolator</p>
+<p>布尔值。“true”表示在所有的子元素之间共享相同的插值器。</p>
+<p>alpha:</p>
+<p>淡入淡出动画，表示AlphaAnimation。</p>
+<p>属性：</p>
+<p>android:fromAlpha</p>
+<p>float类型。开始透明度变化，其中0.0表示透明，1.0表示不透明。</p>
+<p>android:toAlpha</p>
+<p>float类型。结束透明度变化，其中0.0表示透明，1.0表示不透明。</p>
+<p>对于alpha的更多属性，参阅Animation类引用。</p>
+<p>scale:</p>
+<p>调整大小的动画。可以通过pivotX和pivotY来制定图像伸缩的中心点。例如，指定值为0，0（左上角）， 所有的变换将会向右和向下。</p>
+<p>属性：</p>
+<p>android:fromXScale</p>
+<p>float类型，变换的x坐标起始值，1.0表示未改变。</p>
+<p>android:toXScale</p>
+<p>float类型，变换的x坐标结束值，1.0表示为改变。</p>
+<p>android:fromYScale</p>
+<p>float类型，变换的y坐标起始值，1.0表示为改变。</p>
+<p>android:toYScale</p>
+<p>float类型，变换的y坐标结束值，1.0表示为改变。</p>
+<p>android:pivotX</p>
+<p>float类型，在缩放时固定不变的x坐标。</p>
+<p>android:pivotY</p>
+<p>float类型，在缩放时固定不变的y坐标。</p>
+<p>translate：</p>
+<p>垂直或水平的运动。支持以下三种格式的属性：</p>
+<p>值以“％”结尾的-100到100，表示相对于自身的百分比; </p>
+<p>值以“％p”结尾的-100到100，表示相对于其父代的百分比;</p>
+<p> 没有后缀的浮点值，表示绝对值。</p>
+<p>属性：</p>
+<p>android:fromXDelta</p>
+<p>float或百分比。x坐标起始值，表示：相对于正常位置（例如“5”）的像素，相对于元素宽度（例如“5％”）的百分比，或相对于父宽度的百分比（例如“5％p” ）。</p>
+<p>android:toXDelta</p>
+<p>float或百分比。x坐标结束值，表示：相对于正常位置（例如“5”）的像素，相对于元素宽度（例如“5％”）的百分比，或相对于父宽度的百分比（例如“5％p” ）。</p>
+<p>android:fromXDelta</p>
+<p>float或百分比。y坐标起始值，表示：相对于正常位置（例如“5”）的像素，相对于元素宽度（例如“5％”）的百分比，或相对于父宽度的百分比（例如“5％p” ）。</p>
+<p>android:toXDelta</p>
+<p>float或百分比。y坐标结束值，表示：相对于正常位置（例如“5”）的像素，相对于元素宽度（例如“5％”）的百分比，或相对于父宽度的百分比（例如“5％p” ）。</p>
+<p>rotate：</p>
+<p>旋转动画。</p>
+<p>属性:</p>
+<p>android:fromDegrees</p>
+<p>float,起始角度位置，以度为单位。</p>
+<p>android:toDegrees</p>
+<p>float,结束角度位置，以度为单位。</p>
+<p>android:pivotX</p>
+<p>浮动或百分比。 旋转中心的X坐标。 表示为：相对于对象左边缘的像素（例如“5”），相对于对象左边缘的百分比（例如“5％”）或相对于父容器的左边缘的百分比（例如“ 5％p“）。</p>
+<p>android:pivotY</p>
+<p>浮动或百分比。 旋转中心的Y坐标。 表示为：相对于对象的顶部边缘（例如“5”）的像素，相对于对象的顶部边缘的百分比（例如“5％”）或相对于父容器的顶部边缘的百分比（例如“ 5％p“）。</p>
+<p>例子：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">set</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">    <span class="attr">android:shareInterpolator</span>=<span class="string">"false"</span>&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">scale</span></span></div><div class="line">        <span class="attr">android:interpolator</span>=<span class="string">"@android:anim/accelerate_decelerate_interpolator"</span></div><div class="line">        <span class="attr">android:fromXScale</span>=<span class="string">"1.0"</span></div><div class="line">        <span class="attr">android:toXScale</span>=<span class="string">"1.4"</span></div><div class="line">        <span class="attr">android:fromYScale</span>=<span class="string">"1.0"</span></div><div class="line">        <span class="attr">android:toYScale</span>=<span class="string">"0.6"</span></div><div class="line">        <span class="attr">android:pivotX</span>=<span class="string">"50%"</span></div><div class="line">        <span class="attr">android:pivotY</span>=<span class="string">"50%"</span></div><div class="line">        <span class="attr">android:fillAfter</span>=<span class="string">"false"</span></div><div class="line">        <span class="attr">android:duration</span>=<span class="string">"700"</span> /&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">set</span></span></div><div class="line">        <span class="attr">android:interpolator</span>=<span class="string">"@android:anim/accelerate_interpolator"</span></div><div class="line">        <span class="attr">android:startOffset</span>=<span class="string">"700"</span>&gt;</div><div class="line">        <span class="tag">&lt;<span class="name">scale</span></span></div><div class="line">            <span class="attr">android:fromXScale</span>=<span class="string">"1.4"</span></div><div class="line">            <span class="attr">android:toXScale</span>=<span class="string">"0.0"</span></div><div class="line">            <span class="attr">android:fromYScale</span>=<span class="string">"0.6"</span></div><div class="line">            <span class="attr">android:toYScale</span>=<span class="string">"0.0"</span></div><div class="line">            <span class="attr">android:pivotX</span>=<span class="string">"50%"</span></div><div class="line">            <span class="attr">android:pivotY</span>=<span class="string">"50%"</span></div><div class="line">            <span class="attr">android:duration</span>=<span class="string">"400"</span> /&gt;</div><div class="line">        <span class="tag">&lt;<span class="name">rotate</span></span></div><div class="line">            <span class="attr">android:fromDegrees</span>=<span class="string">"0"</span></div><div class="line">            <span class="attr">android:toDegrees</span>=<span class="string">"-45"</span></div><div class="line">            <span class="attr">android:toYScale</span>=<span class="string">"0.0"</span></div><div class="line">            <span class="attr">android:pivotX</span>=<span class="string">"50%"</span></div><div class="line">            <span class="attr">android:pivotY</span>=<span class="string">"50%"</span></div><div class="line">            <span class="attr">android:duration</span>=<span class="string">"400"</span> /&gt;</div><div class="line">    <span class="tag">&lt;/<span class="name">set</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">set</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>下面代码将动画应用于ImageView，并启动动画：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ImageView image = (ImageView) findViewById(R.id.image);</div><div class="line">Animation hyperspaceJump = AnimationUtils.loadAnimation(<span class="keyword">this</span>, R.anim.hyperspace_jump);</div><div class="line">image.startAnimation(hyperspaceJump);</div></pre></td></tr></table></figure>
+<h4 id="插值器"><a href="#插值器" class="headerlink" title="插值器"></a>插值器</h4><p>插值器是定义在xml中的动画修改器，它可以改变动画的效果。它可以使得现有的动画效果加速，减速，重复和反弹等。</p>
+<p>插值器通过动画元素的android:interpolator属性被应用，该属性的值是对插值器资源的引用。</p>
+<p>在Android中所有可以使用的插值器都是Interpolator的子类。Android系统中提供了一个公共插值器资源，可以为动画的android：interpolator属性引用该资源。下表指定了每个插值器使用的资源：</p>
+<table>
+<thead>
+<tr>
+<th>Interpolator class</th>
+<th>Resource ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AccelerateDecelerateInterpolator</td>
+<td>@android:anim/accelerate_decelerate_interpolator</td>
+</tr>
+<tr>
+<td>AccelerateInterpolator</td>
+<td>@android:anim/accelerate_interpolato</td>
+</tr>
+<tr>
+<td>AnticipateInterpolator</td>
+<td>@android:anim/anticipate_interpolator</td>
+</tr>
+<tr>
+<td>AnticipateOvershootInterpolator</td>
+<td>@android:anim/anticipate_overshoot_interpolator</td>
+</tr>
+<tr>
+<td>BounceInterpolator</td>
+<td>@android:anim/bounce_interpolator</td>
+</tr>
+<tr>
+<td>CycleInterpolator</td>
+<td>@android:anim/cycle_interpolator</td>
+</tr>
+<tr>
+<td>DecelerateInterpolator</td>
+<td>@android:anim/decelerate_interpolator</td>
+</tr>
+<tr>
+<td>LinearInterpolator</td>
+<td>@android:anim/linear_interpolator</td>
+</tr>
+<tr>
+<td>OvershootInterpolator</td>
+<td>@android:anim/overshoot_interpolator</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">set</span> <span class="attr">android:interpolator</span>=<span class="string">"@android:anim/accelerate_interpolator"</span>&gt;</span></div><div class="line">    ...</div><div class="line"><span class="tag">&lt;/<span class="name">set</span>&gt;</span></div></pre></td></tr></table></figure>
+<h4 id="自定义插值器"><a href="#自定义插值器" class="headerlink" title="自定义插值器"></a>自定义插值器</h4><p>如果对于提供的插值器不满意，可以自己创建修改属性的自定义插值器资源。为此，您需要在XML文件中创建自己的插值器资源。</p>
+<p>例子：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">InterpolatorName</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">    <span class="attr">android:attribute_name</span>=<span class="string">"value"</span></div><div class="line">    /&gt;</div></pre></td></tr></table></figure>
+<p>如果没有设置任何的属性，则插值器与原有的功能完全相同。</p>
+<p>元素：</p>
+<p>请注意，每个Interpolator实现在XML中定义时，以小写开头其名称。</p>
+<p>accelerateDecelerateInterpolator：</p>
+<p>在动画的开始和结束时速度缓慢，动画中间部分速度提高。没有属性。</p>
+<p>accelerateInterpolator：</p>
+<p>变化开始速度慢，然后开始加速。android:factor ：加速度（默认1）float</p>
+<p>anticipateInterpolator:</p>
+<p>变化开始时向后，然后向前。android:tension ：应用的张力（默认值为2）float</p>
+<p>anticipateOvershootInterpolator：</p>
+<p>变化开始时向后，然后向前并超过目标值，然后稳定在最终值。</p>
+<ul>
+<li>android:tension ：应用的张力（默认值为2）float。</li>
+<li>android:extraTension ： 乘以张力的值（默认1.5）float。</li>
+</ul>
+<p>bounceInterpolator：</p>
+<p>在变化的结束时反弹。</p>
+<p>cycleInterpolator：</p>
+<p>指定重复动画的周期数。 变化率遵循正弦模式。android:cycles：重复次数（默认1）Integer</p>
+<p>decelerateInterpolator:</p>
+<p>变化开始时快速，然后开始减速。android:factor ：减速率（默认1）float</p>
+<p>linearInterpolator：</p>
+<p>恒定的线性变化。</p>
+<p>overshootInterpolator：</p>
+<p>该变化向前超过最大的值，然后返回。android:tension ：张力值（默认值为2）float</p>
+<p>例子：res/anim/my_overshoot_interpolator.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">overshootInterpolator</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">    <span class="attr">android:tension</span>=<span class="string">"7.0"</span></div><div class="line">    /&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">scale</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">    <span class="attr">android:interpolator</span>=<span class="string">"@anim/my_overshoot_interpolator"</span></div><div class="line">    <span class="attr">android:fromXScale</span>=<span class="string">"1.0"</span></div><div class="line">    <span class="attr">android:toXScale</span>=<span class="string">"3.0"</span></div><div class="line">    <span class="attr">android:fromYScale</span>=<span class="string">"1.0"</span></div><div class="line">    <span class="attr">android:toYScale</span>=<span class="string">"3.0"</span></div><div class="line">    <span class="attr">android:pivotX</span>=<span class="string">"50%"</span></div><div class="line">    <span class="attr">android:pivotY</span>=<span class="string">"50%"</span></div><div class="line">    <span class="attr">android:duration</span>=<span class="string">"700"</span> /&gt;</div></pre></td></tr></table></figure>
+<h4 id="帧动画"><a href="#帧动画" class="headerlink" title="帧动画"></a>帧动画</h4><p>在XML中定义的动画，按顺序显示一系列图像（如电影）。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">animation-list</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">    <span class="attr">android:oneshot</span>=<span class="string">[</span>"<span class="attr">true</span>" | "<span class="attr">false</span>"] &gt;</div><div class="line">    <span class="tag">&lt;<span class="name">item</span></span></div><div class="line">        <span class="attr">android:drawable</span>=<span class="string">"@[package:]drawable/drawable_resource_name"</span></div><div class="line">        <span class="attr">android:duration</span>=<span class="string">"integer"</span> /&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">animation-list</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>animation-list：</p>
+<p>必须的根元素。 包含一个或多个item元素。</p>
+<ul>
+<li>android:oneshot ：布尔值。true表示动画执行一次，false表示循环动画。</li>
+</ul>
+<p>item：</p>
+<p>单帧动画。 必须是animation-list元素的子元素。</p>
+<p>使用：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">animation-list</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">    <span class="attr">android:oneshot</span>=<span class="string">"false"</span>&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:drawable</span>=<span class="string">"@drawable/rocket_thrust1"</span> <span class="attr">android:duration</span>=<span class="string">"200"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:drawable</span>=<span class="string">"@drawable/rocket_thrust2"</span> <span class="attr">android:duration</span>=<span class="string">"200"</span> /&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">item</span> <span class="attr">android:drawable</span>=<span class="string">"@drawable/rocket_thrust3"</span> <span class="attr">android:duration</span>=<span class="string">"200"</span> /&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">animation-list</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mageView rocketImage = (ImageView) findViewById(R.id.rocket_image);</div><div class="line">rocketImage.setBackgroundResource(R.drawable.rocket_thrust);</div><div class="line"></div><div class="line">rocketAnimation = (AnimationDrawable) rocketImage.getBackground();</div><div class="line">rocketAnimation.start();</div></pre></td></tr></table></figure>
+</div></article></div></main><footer><div class="paginator"><a href="/2017/03/23/Java类初始化/" class="prev">上一篇</a><a href="/2017/01/11/Android系统架构/" class="next">下一篇</a></div><div class="copyright"><p>© 2017 <a href="http://yoursite.com">Beaven Wang</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script></body></html>
